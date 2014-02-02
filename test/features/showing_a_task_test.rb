@@ -1,9 +1,10 @@
 require "test_helper"
 
-feature "ShowingATask" do
-  scenario "the test is sound" do
+feature "Showing A Task" do
+  scenario "show a task starting from the home page" do
     visit root_path
-    page.must_have_content "Hello World"
-    page.wont_have_content "Goobye All!"
+    click_on lists(:rails).description
+    click_on tasks(:rt1).description
+    page.text.must_have_content tasks(:rt1).description
   end
 end

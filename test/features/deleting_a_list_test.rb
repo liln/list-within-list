@@ -1,9 +1,9 @@
 require "test_helper"
 
-feature "DeletingAList" do
-  scenario "the test is sound" do
+feature "Deleting A List" do
+  scenario "delete a list starting from home pg" do
     visit root_path
-    page.must_have_content "Hello World"
-    page.wont_have_content "Goobye All!"
+    page.find("a[href='#{list_path(lists(:app))}'][data-method='delete']").click
+    page.wont_have_content "How to create your first app"
   end
 end

@@ -1,9 +1,10 @@
 require "test_helper"
 
-feature "DeletingATask" do
-  scenario "the test is sound" do
+feature "Deleting A Task" do
+  scenario "delete a task starting from home pg" do
     visit root_path
-    page.must_have_content "Hello World"
-    page.wont_have_content "Goobye All!"
+    click_on "How to create your first app"
+    page.find("a[href='#{task_path(tasks(:at1))}'][data-method='delete']").click
+    page.wont_have_content "app task 1"
   end
 end

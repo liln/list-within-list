@@ -1,9 +1,13 @@
 require "test_helper"
 
-feature "ShowingAList" do
-  scenario "the test is sound" do
+feature "Showing A List" do
+  scenario "show a list and tasks from the home page" do
     visit root_path
-    page.must_have_content "Hello World"
-    page.wont_have_content "Goobye All!"
+    click_on lists(:rails).description
+
+    page.text.must_have_content lists(:rails).description
+    page.text.must_have_content tasks(:rt1).description
+    page.text.must_have_content tasks(:rt2).description
+    page.text.must_have_content tasks(:rt3).description
   end
 end

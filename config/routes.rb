@@ -1,7 +1,7 @@
 Howto::Application.routes.draw do
-  resources :tasks do
-    resources :lists
+  resources :lists do
+    resources :tasks
   end
 
-  root to: "tasks#index"
+  root :to => "lists#index"
 end

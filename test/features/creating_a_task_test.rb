@@ -1,9 +1,13 @@
 require "test_helper"
 
-feature "CreatingATask" do
-  scenario "the test is sound" do
+feature "Creating A Task" do
+  scenario "create a task from the home page" do
     visit root_path
-    page.must_have_content "Hello World"
-    page.wont_have_content "Goobye All!"
+    click_on "How to set up Ruby"
+    click_on "New Task"
+    fill_in "description", with: "Ruby task 1"
+    click_on "Create Task"
+    page.text.must_have_content "Task was successfully created"
+    page.text.must_have_content "Ruby task 1"
   end
 end

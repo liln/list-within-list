@@ -1,9 +1,13 @@
 require "test_helper"
 
-feature "EditingAList" do
-  scenario "the test is sound" do
+feature "Editing A List" do
+  scenario "edit a list description starting from home page" do
     visit root_path
-    page.must_have_content "Hello World"
-    page.wont_have_content "Goobye All!"
+    click_on lists(:ruby).description
+    click_on "Edit"
+    fill_in "Description", with: "How to get started with Ruby on Ubuntu"
+    click_on "Update List"
+    page.must_have_content "How to get started with Ruby on Ubuntu"
+    page.wont_have_content "How to set up Ruby"
   end
 end

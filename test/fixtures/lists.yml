@@ -1,0 +1,11 @@
+ruby:
+  description: How to set up Ruby
+  priority: 1
+
+rails:
+  description: How to set up Rails
+  priority: 2
+
+app:
+  description: How to create your first app
+  priority: 3
