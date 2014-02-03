@@ -3,10 +3,8 @@
 <table>
   <thead>
     <tr>
-      <th>Description</th>
-      <th>Priority</th>
       <th>Finished</th>
-      <th></th>
+      <th>Description</th>
       <th></th>
       <th></th>
     </tr>
@@ -15,10 +13,8 @@
   <tbody>
     <% @tasks.each do |task| %>
       <tr>
-        <td><%= task.description %></td>
-        <td><%= task.priority %></td>
         <td><%= task.finished %></td>
-        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to task.description, task %></td>
         <td><%= link_to 'Edit', edit_task_path(task) %></td>
         <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

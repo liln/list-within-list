@@ -28,8 +28,8 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @task }
+        format.html { redirect_to @list, notice: 'Task was successfully created.' }
+        format.json { render action: 'show', status: :created, location: @list }
       else
         format.html { render action: 'new' }
         format.json { render json: @task.errors, status: :unprocessable_entity }
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to @list, notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
@@ -64,6 +64,7 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
+      @list = List.find(params[:id])
       @task = Task.find(params[:id])
     end
 
