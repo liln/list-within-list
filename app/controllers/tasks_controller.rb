@@ -14,6 +14,7 @@ class TasksController < ApplicationController
 
   # GET /tasks/new
   def new
+    @list = List.find(params[:list_id])
     @task = Task.new
   end
 
@@ -24,7 +25,10 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
+    @list = List.find(params[:list_id])
+    #@task = @list.build_task(task_params)
     @task = Task.new(task_params)
+    @task.list_id = @list.id
 
     respond_to do |format|
       if @task.save
@@ -56,7 +60,7 @@ class TasksController < ApplicationController
   def destroy
     @task.destroy
     respond_to do |format|
-      format.html { redirect_to tasks_url }
+      format.html { redirect_to @list }
       format.json { head :no_content }
     end
   end
@@ -64,7 +68,7 @@ class TasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_task
-      @list = List.find(params[:id])
+      @list = List.find(params[:list_id])
       @task = Task.find(params[:id])
     end
 

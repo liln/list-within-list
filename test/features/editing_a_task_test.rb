@@ -5,7 +5,6 @@ feature "Editing A Task" do
     visit root_path
     click_on lists(:rails).description
     click_on tasks(:rt2).description
-    click_on "Edit"
     fill_in "Description", with: "this task is booya!"
     click_on "Update Task"
     page.must_have_content "this task is booya!"

@@ -16,7 +16,7 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-group :developement do
+group :development do
   gem 'pry-rails'
 end
 
